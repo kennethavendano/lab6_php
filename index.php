@@ -1,3 +1,9 @@
+<?php 
+include 'includes/book.php'; 
+$books[0]->buy();
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,35 +29,18 @@
   			<h4 class="decorated"><span><span class="emphasized">The Hunger Games</span></span></h4>
 
 	  		<div id="content">
-	  			<div class="row">
+			  <?php foreach ($books as $book) { ?>
 
 	  				<div class="column">
-	  					<img src="IMAGE" style="width:60%">
-	  					<h5>TITLE</h5>
-	  					<h5>by AUTHOR</h5>
+	  					<img src=" <?= $book->image;?> " style="width:60%">
+	  					<h5> <?= $book->title;?> </h5>
+	  					<h5> <?= $book->author;?> </h5>
 	  					<!-- SHOW STAR RATINGS -->
-	  					<h5><span class="emphasized">CHECK STOCK</span>
-						<h5>$PRICE</h5>
+						<?= $book->showRatingStars() ?>
+	  					<h5><span class="emphasized"> <?= $book->checkInStock() ?> </span>
+						<h5> <?= $book->price;?> </h5>
 	  				</div>
-
-	  				<div class="column">
-	  					<img src="IMAGE" style="width:60%">
-	  					<h5>TITLE</h5>
-	  					<h5>by AUTHOR</h5>
-	  					<!-- SHOW STAR RATINGS -->
-	  					<h5><span class="emphasized">CHECK STOCK</span>
-						<h5>$PRICE</h5>
-	  				</div>
-
-	  				<div class="column">
-	  					<img src="IMAGE" style="width:60%">
-	  					<h5>TITLE</h5>
-	  					<h5>by AUTHOR</h5>
-	  					<!-- SHOW STAR RATINGS -->
-	  					<h5><span class="emphasized">CHECK STOCK</span>
-						<h5>$PRICE</h5>
-	  				</div>
-				</div>
+					<?php } ?>
 			</div>
     	</section>
 	</body>
